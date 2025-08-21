@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Stone Paper Scissor Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #141E30, #243B55);
+      color: white;
+      text-align: center;
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+    }
+
+    button {
+      padding: 15px 30px;
+      font-size: 18px;
+      font-weight: bold;
+      border: none;
+      border-radius: 12px;
+      background: linear-gradient(45deg, #00c6ff, #0072ff);
+      color: white;
+      cursor: pointer;
+      box-shadow: 0 8px 20px rgba(0, 114, 255, 0.4);
+      transition: all 0.3s ease;
+    }
+
+    button:hover {
+      background: linear-gradient(45deg, #0072ff, #00c6ff);
+      transform: scale(1.05);
+      box-shadow: 0 10px 25px rgba(0, 114, 255, 0.7);
+    }
+
+    footer {
+      position: absolute;
+      bottom: 15px;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+  </style>
+
+  <script>
+    function playGame() {
+      let playAgain = true;
+
+      while (playAgain) {
+        let userChoice = prompt("Enter your choice: stone, paper or scissor").toLowerCase();
+
+        if (userChoice !== "stone" && userChoice !== "paper" && userChoice !== "scissor") {
+          alert("Invalid choice! Please enter stone, paper, or scissor.");
+          continue;
+        }
+
+        let options = ["stone", "paper", "scissor"];
+        let computerChoice = options[Math.floor(Math.random() * options.length)];
+
+        alert("Computer chose: " + computerChoice);
+
+        if (userChoice === computerChoice) {
+          alert("🤝 It's a draw!");
+        } else if (
+          (userChoice === "stone" && computerChoice === "scissor") ||
+          (userChoice === "paper" && computerChoice === "stone") ||
+          (userChoice === "scissor" && computerChoice === "paper")
+        ) {
+          alert("🎉 You Win!");
+        } else {
+          alert("😢 You Lose!");
+        }
+
+        playAgain = confirm("Do you want to play again?");
+      }
+      alert("Thanks for playing!");
+    }
+  </script>
+</head>
+<body>
+  <h2>✨ Stone Paper Scissor Game ✨</h2>
+  <button onclick="playGame()">🎮 Start Game</button>
+  <footer>Made with ❤️ by Vansh</footer>
+</body>
+</html>
